@@ -1,1 +1,3 @@
-# thought-tracker
+# Thought Tracker
+
+## Descriptionf
