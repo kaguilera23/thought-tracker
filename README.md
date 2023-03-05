@@ -22,4 +22,4 @@ At first, the save button for a note won't populate because we don't want to sav
 
 Here's the link to check out your new thought tracker!
 
-<a href="">Live Link</a>
+<a href="https://enigmatic-bastion-37302.herokuapp.com/">Live Link</a>
