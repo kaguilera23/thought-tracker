@@ -1,7 +1,6 @@
 const fs = require("fs")
 const express = require("express")
 const path = require("path")
-const db = require("./db/db.json")
 const util = require("util");
 const readDatabase = util.promisify(fs.readFile);
 
@@ -33,21 +32,19 @@ app.post("/api/notes", (req, res) => {
       };
   
   
-      // save the note to db
-      const file = "./db/db.json";
-      fs.readFile(file, "utf8", (err, data) => {
+      // save the note to database
+      fs.readFile("./db/db.json", "utf8", (err, data) => {
         if (err) {
           console.error(err);
         } else {
           const notesData = JSON.parse(data);
           notesData.push(note);
   
-          fs.writeFile(file, JSON.stringify(notesData), (err) => {
+          fs.writeFile("./db/db.json", JSON.stringify(notesData), (err) => {
             if (err) {
               console.error(err);
             }
-            console.log(`Your note has been added!`);
-            res.send(note);
+            res.json(note);
           });
         }
       });
@@ -59,5 +56,5 @@ app.get("*", (req, res) => {
 })
 
 app.listen(PORT, () => {
-    console.log("Now Listening on Port " + PORT)
+    console.log(`Now listening on port ${PORT}`)
 })
